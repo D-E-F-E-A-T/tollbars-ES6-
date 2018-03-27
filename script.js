@@ -5,7 +5,7 @@ class MWPjs {
         this.clickOk = date.clickOk;
         this.position = date.position;
     }
-    // check position
+
     checkPosition() {
         const p = document.getElementsByTagName('p');
         const clickElem = document.getElementById('iDcloseSpan');
@@ -40,23 +40,23 @@ class MWPjs {
         this.checkPosition();
         this.setAnchorText();
         this.exitClick();
+        this.onclick();
     }
 
     messages() {
-        const messageDiv = document.createElement('p');
+        const messageDiv = document.createElement('p'); //create message with elements
         messageDiv.setAttribute('class', 'message');
         document.getElementById('top').appendChild(messageDiv)
         const p = document.getElementsByTagName('p');
         if (this.position == 'top') {
             document.getElementsByTagName('p')[0].innerHTML = this.message;
-            if(p.length > 1) {
+            if(p.length > 1) { // remove message from bottom bar
                 p[1].remove();
             }
         }
     }
 
     setAnchorText() {
-        console.log(document.getElementsByClassName('ancher'));
         const anchor = document.getElementsByClassName('ancher')[0];
         anchor.textContent = 'take your survey';
         anchor.onclick = () => this.clickOk();
@@ -70,9 +70,17 @@ class MWPjs {
         document.getElementsByClassName('container')[0].appendChild(closeSpan);
 
         if(spanLength.length > 1) {
-            spanLength[1].remove();
+            spanLength[1].remove(); // stop creating span's
         }
         closeSpan.innerHTML = "X"
+    }
+
+    onclick() {
+        const idSpan = document.getElementById('iDcloseSpan');
+        idSpan.onclick = () => {
+            this.close();
+            document.getElementsByClassName('container')[0].remove();
+        }
     }
 
     topPosition() {
