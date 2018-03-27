@@ -7,31 +7,26 @@ class MWPjs {
     }
     // check position
     checkPosition() {
+        const p = document.getElementsByTagName('p');
+        const clickElem = document.getElementById('iDcloseSpan');
         if(this.position == 'top') {
             document.getElementsByTagName('div')[1].setAttribute("id", "top");
             this.checkLength();
 
-
         } else if (this.position == 'bottom') {
             document.getElementsByTagName('div')[1].setAttribute("id", "bot");
-            this.checkLength()
+            this.checkLength();
+
+            if (p.length != 0) { // if p dont exist, do not set innerHTML
+                document.getElementsByTagName('p')[0].innerHTML = '';
+            }
         }
     }
-    // check position and remove bar
+    // check position and remove bar, we dont wanna create more than one
     checkLength() {
         const containerElem = document.getElementsByClassName('container');
-        console.log(containerElem)
         if(containerElem.length > 1) {
             containerElem[1].remove();
-        }
-    }
-
-    messages() {
-        const messageDiv = document.createElement('p');
-        messageDiv.setAttribute('class', 'message');
-        document.getElementById('top').appendChild(messageDiv)
-        if (this.position == 'top') {
-            document.getElementsByClassName('message').innerHTML = this.message;
         }
     }
     // create main bar
@@ -44,18 +39,46 @@ class MWPjs {
         document.body.appendChild(container);
         this.checkPosition();
         this.setAnchorText();
+        this.exitClick();
+    }
+
+    messages() {
+        const messageDiv = document.createElement('p');
+        messageDiv.setAttribute('class', 'message');
+        document.getElementById('top').appendChild(messageDiv)
+        const p = document.getElementsByTagName('p');
+        if (this.position == 'top') {
+            document.getElementsByTagName('p')[0].innerHTML = this.message;
+            if(p.length > 1) {
+                p[1].remove();
+            }
+        }
     }
 
     setAnchorText() {
-        console.log(document.getElementsByClassName('ancher'))
+        console.log(document.getElementsByClassName('ancher'));
         const anchor = document.getElementsByClassName('ancher')[0];
         anchor.textContent = 'take your survey';
         anchor.onclick = () => this.clickOk();
     }
 
+    exitClick() {
+        const spanLength = document.getElementsByTagName('span');
+        const closeSpan = document.createElement('span');
+        closeSpan.setAttribute('class', 'closeSpan');
+        closeSpan.setAttribute('id', 'iDcloseSpan');
+        document.getElementsByClassName('container')[0].appendChild(closeSpan);
+
+        if(spanLength.length > 1) {
+            spanLength[1].remove();
+        }
+        closeSpan.innerHTML = "X"
+    }
+
     topPosition() {
         this.position = 'top';
         this.bar();
+        this.messages();
     }
 
     bottomPosition() {

@@ -7,6 +7,10 @@ body {
     width: 100%;
     background: black;
     position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
 }
 
 .containerButton {
@@ -37,6 +41,11 @@ body {
     border-radius: 5px;
     font-family: sans-serif;
     cursor: pointer;
-    margin: auto;
-    margin-top: 10px;
+
+}
+.message {
+    color: white;
+    margin: 0;
+    padding: 0;
+    padding-right: 15px;
 }
