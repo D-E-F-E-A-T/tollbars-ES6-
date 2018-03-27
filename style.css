@@ -1,12 +1,12 @@
 body {
 
 }
+
 .container {
     height: 45px;
     width: 100%;
     background: black;
     position: absolute;
-
 }
 
 .containerButton {
@@ -18,8 +18,25 @@ body {
 
 #top {
     top: 0;
+    color: white;
 }
 
 #bot {
     bottom: 0;
+}
+
+.ancher {
+    color: black;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    background: #deff33;
+    width: 180px;
+    display: flex;
+    position: relative;
+    border-radius: 5px;
+    font-family: sans-serif;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 10px;
 }
