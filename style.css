@@ -15,3 +15,11 @@ body {
     top: 50%;
     justify-content: space-evenly;
 }
+
+#top {
+    top: 0;
+}
+
+#bot {
+    bottom: 0;
+}
