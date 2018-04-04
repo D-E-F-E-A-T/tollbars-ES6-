@@ -93,7 +93,6 @@ class MWPjs {
         this.position = 'bottom';
         this.bar();
     }
-
 }
 
 const myBar = new MWPjs({
