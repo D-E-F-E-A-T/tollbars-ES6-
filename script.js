@@ -17,7 +17,7 @@ class MWPjs {
             document.getElementsByTagName('div')[1].setAttribute("id", "bot");
             this.checkLength();
 
-            if (p.length != 0) { // if p dont exist, do not set innerHTML
+            if (p.length != 0) { // if p(message) dont exist, do not set innerHTML
                 document.getElementsByTagName('p')[0].innerHTML = '';
             }
         }

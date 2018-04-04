@@ -7,9 +7,9 @@ Toolbars objects
 
 ```javascript
 const myBar = new MWPjs({
-	message: 'msg here - Beautiful and simple website widgets',
+	message: 'Beautiful and simple website widgets',
 	close: function(){ alert('closed') },
 	clickOk: function(){ alert('click ok') },
-	position: 'top'
+	position: 'top/bottom'
 });
 ```
